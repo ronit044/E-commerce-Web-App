@@ -1,20 +1,31 @@
 import React from "react";
-import "./Login_Page.css";
+import {
+    LoginContainerCustom,
+    SignupTextCustom,
+    Heading1,
+    Form,
+    Label,
+    Input,
+    Button,
+    Link
+} from "./Login_Page_CSS";
 
-function Login_Page() {
+function LoginPage() {
     return (
-        <div className="login-container-custom">
-            <h1>Login</h1>
-            <form>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" name="username" required/>
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" required/>
-                <button type="submit">Login</button>
-            </form>
-            <p className="signup-text-custom">Don't have an account? <a href="#">Signup</a></p>
-        </div>
+        <LoginContainerCustom>
+            <Heading1>Login</Heading1>
+            <Form>
+                <Label htmlFor="username">Username:</Label>
+                <Input type="text" id="username" name="username" required />
+                <Label htmlFor="password">Password:</Label>
+                <Input type="password" id="password" name="password" required />
+                <Button type="submit">Login</Button>
+            </Form>
+            <SignupTextCustom>
+                Don't have an account? <Link href="#">Signup</Link>
+            </SignupTextCustom>
+        </LoginContainerCustom>
     );
 }
 
-export default Login_Page;
+export default LoginPage;
