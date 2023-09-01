@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     LoginContainerCustom,
     SignupTextCustom,
@@ -7,24 +8,23 @@ import {
     Label,
     Input,
     Button,
-    Link,
     Warning
 } from "./Login_Page_CSS";
 import Axios from "../../Backend/API/Axios";
 
 function LoginPage() {
-    const [Warn,setWarn]=useState(false);
-    async function handleSubmit(e){
+    const [Warn, setWarn] = useState(false);
+    async function handleSubmit(e) {
         e.preventDefault();
-        var {username,password}=e.target.elements;
-       const res=await Axios.post("/loginVerification",{"Username":username.value,"Password":password.value});
-       const r=res.data.LoginStatus;
-       if(r===true){
-       window.location.href="/";
-       }
-       else{
-        setWarn(true);
-       }
+        var { username, password } = e.target.elements;
+        const res = await Axios.post("/loginVerification", { "Username": username.value, "Password": password.value });
+        const r = res.data.LoginStatus;
+        if (r === true) {
+            window.location.href = "/";
+        }
+        else {
+            setWarn(true);
+        }
     }
     return (
         <LoginContainerCustom>
@@ -36,9 +36,9 @@ function LoginPage() {
                 <Input type="password" id="password" name="password" required />
                 <Button type="submit">Login</Button>
             </Form>
-            {Warn?<Warning>Either Username or password is Incorrect!! try Again!!</Warning>:null}
+            {Warn ? <Warning>Either Username or password is Incorrect!! try Again!!</Warning> : null}
             <SignupTextCustom>
-                Don't have an account? <Link href="#">Signup</Link>
+                Don't have an account? <Link to="/signup">Signup</Link>
             </SignupTextCustom>
         </LoginContainerCustom>
     );

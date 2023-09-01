@@ -48,14 +48,7 @@ export const Button = styled.button`
     }
 `;
 
-export const Link = styled.a`
-    color: #007bff;
-    text-decoration: none;
 
-    &:hover {
-        text-decoration: underline;
-    }
-`;
 
 export const Warning = styled.p`
     margin-top: 20px;

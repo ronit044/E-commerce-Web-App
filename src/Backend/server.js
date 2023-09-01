@@ -34,6 +34,26 @@ app.post("/loginVerification",async (req,res)=>{
 
 });
 
+app.post("/Signup",async (req,res)=>{
+    const {_id,FullName,email,Password}=req.body;
+    const db=await connectDB;
+    const collection=db.collection("User-info");
+    const f=collection.find();
+    const arr=await f.toArray();
+    var x=0;
+    arr.forEach((e)=>{
+        if(e.email===email){
+            x++;
+        res.json({"Status":"Email ID already taken"});
+        }
+    });
+    if(x===0)
+    {
+        const insert=await collection.insertOne(req.body);
+        res.json({"Status":true});
+    }
+});
+
 
 app.listen(4000,()=>{
     console.log("Backend is running on port 4000");
