@@ -13,6 +13,7 @@ export default function ProductDisplay() {
     return <div>
         {Products.map((p) => (
             <ProductTile
+                id={p._id}
                 price={p.price}
                 name={p.name}
                 img={p.img}

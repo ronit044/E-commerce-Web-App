@@ -3,6 +3,11 @@ import { ProductTileWrapper,ProductImageContainer, ProductImage, ProductInfo, Pr
 
 const ProductTile = (p) => {
  
+  function HandleSubmit(e){
+    e.preventDefault();
+    const x=e.target.elements.ProductID.value;
+    alert(x);
+  }
   return (<>
     <ProductTileWrapper>
     <ProductImageContainer>
@@ -12,7 +17,10 @@ const ProductTile = (p) => {
         <ProductTitle>{p.name}</ProductTitle>
         <ProductPrice>₹{p.price}</ProductPrice>
         <ButtonContainer>
-          <AddToCartButton >Add to Cart</AddToCartButton>
+        <form onSubmit={HandleSubmit}>
+        <input type="hidden" value={p.id} name="ProductID" />
+          <AddToCartButton type='submit'>Add to Cart</AddToCartButton>
+          </form>
           <BuyNowButton >Buy Now</BuyNowButton>
         </ButtonContainer>
       </ProductInfo>
