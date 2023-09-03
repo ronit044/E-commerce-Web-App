@@ -3,6 +3,7 @@ import Navbar from "./frontend/Navbar/Navbar";
 import Login from "./frontend/Login/Login";
 import Con from "./frontend/contact/contact";
 import Signup from "./frontend/signup/signup";
+import ProductDisplay from "./frontend/Product_Display/ProductDisplay";
 function Nav(){
     return <>
         <Navbar/>
@@ -30,4 +31,11 @@ function SignUP(){
     </>
 }
 
-export {Nav,Login_Page, Contact,SignUP};
+function Product(){
+    return <>
+        <Navbar/>
+        <ProductDisplay/>
+    </>
+}
+
+export {Nav,Login_Page, Contact,SignUP,Product};

@@ -5,11 +5,11 @@ const client=new MongoClient(uri,{useUnifiedTopology: true});
 async function connectDB(){
     try{
     await client.connect();
-    console.log("Connceted to MongoDB server!");
+    console.log("Connceted to UserDB server!");
     return client.db("Users");
     }
     catch(e){
-        console.log("!!error connecting to MongoDB!!");
+        console.log("!!error connecting to UserDB!!");
     }
    
 }

@@ -3,22 +3,23 @@ const app=Express();
 const bodyParser=require("body-parser");
 const {MongoClient}=require("mongodb");
 const Cors=require("cors");
-const connectDB = require("./MongoDB");
+const UserconnectDB = require("./MongoDB/userDBConnect");
+const ProductconnectDB = require("./MongoDB/ProductDBConnect");
 app.use(Cors({origin:"http://localhost:3000",credentials:true}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.get("/logInData",async (req,res)=>{
-    const db=await connectDB;
-    const collection=db.collection("User-info");
-    const f=collection.find();
-    const arr=await f.toArray();
-    res.json(arr);
-})
+// app.get("/logInData",async (req,res)=>{
+//     const db=await connectDB;
+//     const collection=db.collection("User-info");
+//     const f=collection.find();
+//     const arr=await f.toArray();
+//     res.json(arr);
+// })
 
 app.post("/loginVerification",async (req,res)=>{
     const {Username,Password}=req.body;
-    const db=await connectDB;
+    const db=await UserconnectDB;
     const collection=db.collection("User-info");
     const f=collection.find();
     const arr=await f.toArray();
@@ -36,7 +37,7 @@ app.post("/loginVerification",async (req,res)=>{
 
 app.post("/Signup",async (req,res)=>{
     const {_id,FullName,email,Password}=req.body;
-    const db=await connectDB;
+    const db=await UserconnectDB;
     const collection=db.collection("User-info");
     const f=collection.find();
     const arr=await f.toArray();
@@ -52,6 +53,14 @@ app.post("/Signup",async (req,res)=>{
         const insert=await collection.insertOne(req.body);
         res.json({"Status":true});
     }
+});
+
+app.get("/productData",async (req,res)=>{
+    const db=await ProductconnectDB;
+    const collection=db.collection("cart");
+    const f=collection.find();
+    const arr=await f.toArray();
+    res.json(arr);
 });
 
 
