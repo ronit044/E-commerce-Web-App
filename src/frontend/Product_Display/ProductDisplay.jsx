@@ -4,10 +4,13 @@ import ProductTile from "./Product";
 
 export default function ProductDisplay() {
     const [Products, setProduct] = useState([]);
-    useEffect(async () => {
+    useEffect(() => {
+        async function gData(){
         await Axios.get("/productData").then((r) => {
             setProduct(r.data);
-        })
+        });
+    }
+    gData();
     }, []);
 
     return <div>
