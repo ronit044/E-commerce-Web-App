@@ -10,7 +10,7 @@ import {
     Button,
     Warning
 } from "./Login_Page_CSS";
-import Axios from "../../Backend/API/Axios";
+import Axios from "../../Axios";
 
 function LoginPage() {
     const [Warn, setWarn] = useState(false);
@@ -20,6 +20,8 @@ function LoginPage() {
         const res = await Axios.post("/loginVerification", { "Username": username.value, "Password": password.value });
         const r = res.data.LoginStatus;
         if (r === true) {
+            localStorage.setItem("userName",username);
+            localStorage.setItem("pswd",password);
             window.location.href = "/";
         }
         else {

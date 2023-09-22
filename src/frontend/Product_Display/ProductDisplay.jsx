@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import Axios from "../../Backend/API/Axios";
+import Axios from "../../Axios";
 import ProductTile from "./Product";
 
 export default function ProductDisplay() {

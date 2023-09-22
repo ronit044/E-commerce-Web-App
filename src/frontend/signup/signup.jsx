@@ -7,7 +7,7 @@ import {
   FormButton,
   Warning
 } from './signup_css'; // Import styles
-import Axios from '../../Backend/API/Axios';
+import Axios from '../..//Axios';
 
 const Signup = () => {
     const [SBool,setSBool]=useState(false)
