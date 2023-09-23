@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Axios=axios.create({
-    baseURL:"http://localhost:4000",
+    baseURL:"https://ecommerce-demo-bakend.onrender.com",
     headers:{
         'Content-Type':'application/json',
     }
