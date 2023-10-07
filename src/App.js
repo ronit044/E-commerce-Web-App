@@ -4,6 +4,8 @@ import Login from "./frontend/Login/Login";
 import Con from "./frontend/contact/contact";
 import Signup from "./frontend/signup/signup";
 import ProductDisplay from "./frontend/Product_Display/ProductDisplay";
+import CartTile from "./frontend/Cart/Cart";
+import UserCart from "./frontend/Cart/UserCart";
 function Nav(){
     return <>
         <Navbar/>
@@ -38,4 +40,12 @@ function Product(){
     </>
 }
 
-export {Nav,Login_Page, Contact,SignUP,Product};
+function Cart(){
+    return <>
+        <Navbar/>
+        {/* <CartTile/> */}
+        <UserCart/>
+            </>
+}
+
+export {Nav,Login_Page, Contact,SignUP,Product,Cart};

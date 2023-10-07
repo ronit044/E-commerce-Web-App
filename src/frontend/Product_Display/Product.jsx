@@ -1,12 +1,22 @@
 import React from 'react';
 import { ProductTileWrapper,ProductImageContainer, ProductImage, ProductInfo, ProductTitle, ProductPrice, ButtonContainer, AddToCartButton, BuyNowButton } from './Product_CSS';
+import Axios from '../../Axios';
 
 const ProductTile = (p) => {
- 
-  function HandleSubmit(e){
+  
+  async function HandleAddToCart(e){
     e.preventDefault();
-    const x=e.target.elements.ProductID.value;
-    alert(x);
+    const userName=localStorage.getItem("userName");
+    const Password=localStorage.getItem("pswd");
+    if(userName && Password){
+      const x=e.target.elements.ProductID.value;
+      // alert(x);
+      await Axios.post("/updateCart",{"productID":x})
+      windows.location.reload;
+    }
+    else{
+      alert("login crowww pehle");
+    }
   }
   return (<>
     <ProductTileWrapper>
@@ -17,7 +27,7 @@ const ProductTile = (p) => {
         <ProductTitle>{p.name}</ProductTitle>
         <ProductPrice>₹{p.price}</ProductPrice>
         <ButtonContainer>
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={HandleAddToCart}>
         <input type="hidden" value={p.id} name="ProductID" />
           <AddToCartButton type='submit'>Add to Cart</AddToCartButton>
           </form>
